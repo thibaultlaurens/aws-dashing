@@ -1,10 +1,9 @@
+var dashing = require('dashing-js').Dashing();
 
-var dashing = require('dashing-js');
-var server = dashing.Dashing();
-var app = server.app
-
+//we can get the express app -> todo: rest api to get dashboards data
+var app = dashing.app
 app.get('/api/test', function(req, res) {
-    res.send("Hello TEST");
+    res.send("Hello API");
 });
 
 // Set your auth token here
@@ -19,6 +18,13 @@ app.get('/api/test', function(req, res) {
  */
 
 // Set your default dashboard here
-//dashing.default_dashboard = 'mydashboard';
+dashing.default_dashboard = 'aws';
 
-server.start();
+dashing.start();
+
+//config load and redis co for later
+/*
+var config = require("./config");
+var redis = require("redis");
+var client = redis.createClient(config.DB.PORT, config.DB.HOST);
+*/
