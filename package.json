@@ -1,11 +1,13 @@
 {
-    "name": "aws-dashing",
-    "description": "aws-dashing",
-    "author": "Thibault Laurens",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "dashing-js": "~0.1.5"
-    },
-    "engine": "node >= 0.10"
+  "name": "aws-dashing",
+  "description": "aws-dashing",
+  "author": "Thibault Laurens",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "dashing-js": "~0.1.5",
+    "redis": "~0.10.1",
+    "aws-sdk": "~2.0.0-rc13"
+  },
+  "engine": "node >= 0.10"
 }
