@@ -1,0 +1,11 @@
+{
+    "name": "aws-dashing",
+    "description": "aws-dashing",
+    "author": "Thibault Laurens",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "dashing-js": "~0.1.5"
+    },
+    "engine": "node >= 0.10"
+}
