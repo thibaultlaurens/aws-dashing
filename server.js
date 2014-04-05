@@ -28,3 +28,5 @@ var config = require("./config");
 var redis = require("redis");
 var client = redis.createClient(config.DB.PORT, config.DB.HOST);
 */
+
+var aws_job = require('./jobs/aws.jobs');

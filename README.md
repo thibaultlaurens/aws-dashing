@@ -17,8 +17,9 @@ AWS dashboard powered by Dashing-js, Redis & Node.js
 
 - 1) ~~config.js (redis_url, job_interval, aws_account)~~
 - 2) aws.jobs.js query aws and emit event for dashing
-- 3) design aws.jade and awstv.jade
-- 4) store aws in redis, aws.jobs.js write to redis
+- 3) cron job for aws.job.js
+- 4) design aws.jade and awstv.jade
+- 5) store aws in redis, aws.jobs.js write to redis
 
 
 ### NEXT
