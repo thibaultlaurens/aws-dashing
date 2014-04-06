@@ -17,11 +17,14 @@ AWS dashboard powered by Dashing-js, Redis & Node.js
 
 
 ### Supported components:
-- EC2 instance
-- Elastic Load Balancer
-- Security Group
-- S3 Bucket
-- Elastic IP
+- EC2 instances
+- Elastic Load Balancers
+- Security Groups
+- S3 Buckets
+- Elastic IPs
+- ElastiCache (clusters, nodes and security groups)
+- Route 53 (hosted zones and record set)
+- RDS instances
 
 
 ### Notes
@@ -31,6 +34,8 @@ AWS dashboard powered by Dashing-js, Redis & Node.js
     - EC2 instances: API call
     - Load Balancers: 20
     - Elastic IPs: API call
+    - //todo RDS: 40
+    - //todo ElastiCache instances: 20
 
 
 ### TODO
@@ -40,15 +45,6 @@ AWS dashboard powered by Dashing-js, Redis & Node.js
 - 3) cron job for aws.job.js
 - 4) design aws.jade and awstv.jade
 - 5) store aws in redis, aws.jobs.js write to redis
-
-#### Other default values to implement:
-- RDS: 40
-- R53
-    - Hosted zones: 500
-    - Records: 10,000 / HZ
-- EC:
-    - Nodes: 20
-    - SG: NC
 
 
 ### NEXT
