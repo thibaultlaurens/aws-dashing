@@ -4,13 +4,16 @@ block title
 block content
     div.gridster
         ul
-            li(data-row='1', data-col='1', data-sizex='2', data-sizey='1')
-                div(data-id='welcome', data-view='Text', data-title='Hello', data-text='This is your shiny new dashboard.', data-moreinfo='Protip: You can drag the widgets around!')
             li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
-                div(data-id='synergy', data-view='Meter', data-title='Synergy', data-min='0', data-max='100')
+                div(data-id='ec2', data-view='Meter', data-title='EC2 instances', data-min='0')
+            li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
+                div(data-id='elb', data-view='Meter', data-title='Elastic Load Balancers', data-min='0', data-max='60')
+            li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
+                div(data-id='eip', data-view='Meter', data-title='Elastic IPs', data-min='0')
             li(data-row='1', data-col='1', data-sizex='1', data-sizey='2')
-                div(data-id='lol', data-view='List', data-unordered='true', data-title='Summary', data-moreinfo='aws components currently running')
+                div(data-id='summary', data-view='List', data-unordered='true', data-title='Summary', data-moreinfo='aws components currently available')
             li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
-                div(data-id='valuation', data-view='Number', data-title='Current Valuation', data-moreinfo='In billions', data-prefix='$')
-            li(data-row='1', data-col='1', data-sizex='2', data-sizey='1')
-                div(data-id='convergence', data-view='Graph', data-title='Convergence', style='background-color:#ff9618')
+                div(data-id='sg', data-view='Text', data-title='Security Groups')
+            li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
+                div(data-id='s3', data-view='Text', data-title='S3 Buckets')
+

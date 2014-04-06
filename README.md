@@ -7,9 +7,15 @@ AWS dashboard powered by Dashing-js, Redis & Node.js
 ### Getting started
 
 - instal Node.js (later: + redis + run redis-server somewhere)
-- turn config.ex.js into config.js + replace default values (JOB_REFRESH property needs 'cron' like syntax)
+- turn config.ex.js into config.js + replace default values
 - "node server.js" in your terminal
 - go and check the dashboard at http://localhost:3030
+
+
+### Notes
+
+- JOB_REFRESH property needs 'cron' like syntax
+- max elbs value is hardcoded in aws.jade to 20 (default)
 
 
 
