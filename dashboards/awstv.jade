@@ -1,20 +1,52 @@
 extends layout
 block title
-    | 1080p dashboard
+    | AWS dashboard 1080p
 block content
     div.gridster
         ul
             li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
+                div(data-view='Image', data-image='/logo.png')
+            li(data-row='1', data-col='2', data-sizex='1', data-sizey='1')
                 div(data-view='Clock')
                 i.fa.fa-clock-o.icon-background
-            li(data-row='1', data-col='1', data-sizex='1', data-sizey='1')
-                div(data-view='Image', data-image='/logo.png')
+
+            li(data-row='1', data-col='3', data-sizex='1', data-sizey='1')
+                div(data-id='sg', data-view='Text', data-title='Security Groups')
+            li(data-row='1', data-col='4', data-sizex='1', data-sizey='1')
+                div(data-id='s3', data-view='Text', data-title='S3 Buckets')
+
+            li(data-row='1', data-col='5', data-sizex='1', data-sizey='2')
+                div(data-id='summary', data-view='List', data-unordered='true', data-title='Summary', data-moreinfo='aws components currently available')
+
+
+            li(data-row='2', data-col='1', data-sizex='1', data-sizey='1')
+                div(data-id='ec2', data-view='Meter', data-title='EC2 instances', data-min='0')
+            li(data-row='2', data-col='2', data-sizex='1', data-sizey='1')
+                div(data-id='elb', data-view='Meter', data-title='Load Balancers', data-min='0', data-max='20')
+            li(data-row='2', data-col='3', data-sizex='1', data-sizey='1')
+                div(data-id='eip', data-view='Meter', data-title='Elastic IPs', data-min='0')
+            li(data-row='2', data-col='4', data-sizex='1', data-sizey='1')
+                div(data-id='rds', data-view='Text', data-title='RDS instances')
+
+            li(data-row='3', data-col='1', data-sizex='1', data-sizey='1')
+                div(data-id='cache_cluster', data-view='Text', data-title='ElastiCache clusters')
+            li(data-row='3', data-col='2', data-sizex='1', data-sizey='1')
+                div(data-id='cache_node', data-view='Text', data-title='ElastiCache nodes')
+            li(data-row='3', data-col='3', data-sizex='1', data-sizey='1')
+                div(data-id='cache_sg', data-view='Text', data-title='ElastiCache SG')
+            li(data-row='3', data-col='4', data-sizex='1', data-sizey='1')
+                div(data-id='hz', data-view='Number', data-title='R53 zones')
+            li(data-row='3', data-col='5', data-sizex='1', data-sizey='1')
+                div(data-id='record', data-view='Number', data-title='R53 records')
+
+
 
 block scripts
     script.
         $(function() {
           // These settings override the defaults set in application.coffee. You can do this on a per dashboard basis.
-          Dashing.gridsterLayout('[{"col":2,"row":1},{"col":1,"row":1},{"col":3,"row":1},{"col":2,"row":2},{"col":3,"row":2},{"col":1,"row":2},{"col":5,"row":1},{"col":4,"row":2},{"col":2,"row":3}]')
+          //Dashing.gridsterLayout('[{"col":2,"row":1},{"col":1,"row":1},{"col":3,"row":1},{"col":2,"row":2},{"col":3,"row":2},{"col":1,"row":2},{"col":5,"row":1},{"col":4,"row":2},{"col":2,"row":3}]')
           Dashing.widget_base_dimensions = [370, 340]
           Dashing.numColumns = 5
         });
+
