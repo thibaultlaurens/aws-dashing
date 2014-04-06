@@ -3,6 +3,10 @@ aws-dashing
 
 AWS dashboard powered by Dashing-js, Redis & Node.js
 
+//WORK IN PROGRESS
+
+![alt tag](https://raw.github.com/ThibaultLaurens/aws-dashing/master/screenshot.png)
+
 
 ### Getting started
 
