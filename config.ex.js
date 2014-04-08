@@ -1,6 +1,6 @@
 var base = {
     ENV: process.env.NODE_ENV || 'development',
-    JOB_INTERVAL:"* * * * * *",
+    JOB_INTERVAL:"*/30 * * * * *",
     AWS: {
         ACCESSKEY: "lalalalala",
         SECRETKEY: "lalalalala"

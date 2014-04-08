@@ -29,7 +29,7 @@ AWS dashboard powered by Dashing-js, Redis & Node.js
 
 ### Notes
 
-- JOB_REFRESH property needs 'cron' like syntax
+- JOB_REFRESH property needs 'cron' like syntax, the value in config.ex.js will run the cron job every 30 seconds
 - Values for 'data-max' property of Meters widget:
     - EC2 instances: API call
     - Load Balancers: 20
@@ -42,9 +42,20 @@ AWS dashboard powered by Dashing-js, Redis & Node.js
 
 - 1) ~~config.js (redis_url, job_interval, aws_account)~~
 - 2) ~~aws.jobs.js query aws and emit event for dashing~~
-- 3) cron job for aws.job.js
-- 4) design aws.jade and awstv.jade
+- 3) ~~cron job for aws.job.js~~
+- 4) design aws.jade and awstv.jade - add graph widgets, meter widget for rds and ec_instances
 - 5) store aws in redis, aws.jobs.js write to redis
+
+
+### WIDGET/AWS CALL TO IMPLEMENT
+- s3 objects
+- ec2 volumes
+- ec2 snapshots
+- ec2 tags
+- ec2 ami
+- db snapshots
+- db security groups
+- db schemas
 
 
 ### NEXT
