@@ -37,7 +37,7 @@ new CronJob(config.JOB_INTERVAL, function(){
     aws_service.getELBs(function(err, elbs){
         if (!err) {
             summary.elbs = elbs.length;
-            send_event('elb', {value: elbs.length, max: 20 })
+            send_event('elb', {value: elbs.length, max: config.AWS_LIMITS.ELB })
         }
     });
 

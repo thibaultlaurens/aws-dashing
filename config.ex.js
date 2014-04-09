@@ -4,6 +4,11 @@ var base = {
     AWS: {
         ACCESSKEY: "lalalalala",
         SECRETKEY: "lalalalala"
+    },
+    AWS_LIMITS: {
+        RDS: "40",
+        ELB: "80",
+        ELASTICACHEINSTANCE: "20"
     }
 }
 
