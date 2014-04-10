@@ -90,14 +90,14 @@ new CronJob(config.JOB_INTERVAL, function(){
     aws_service.getR53HostedZones(function(err, r53_hosted_zones){
         if (!err) {
             summary.r53_hosted_zones = r53_hosted_zones.length;
-            send_event('hz', {current: r53_hosted_zones.length });
+            send_event('hz', {text: r53_hosted_zones.length });
 
             summary.r53_records = 0;
             r53_hosted_zones.forEach(function (hosted_zone) {
                 aws_service.getR53RecordsSet(hosted_zone.Id, function (err, record_sets) {
                  if (!err) {
                      summary.r53_records += record_sets.length;
-                     send_event('record', {current: summary.r53_records});
+                     send_event('record', {text: summary.r53_records});
                  }
                 });
             });
