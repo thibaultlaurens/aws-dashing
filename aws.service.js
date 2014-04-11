@@ -86,7 +86,21 @@ module.exports = {
         });
     },
 
-    //todo: getS3Objects(buceckId, next)
+    getS3Objects: function (bucket_name, next) {
+        var listS3Objects = function (bucket_name, index, objects, next) {
+            s3.listObjects({Bucket:bucket_name, Marker:index}, function (err, data) {
+                if (err) return next(err, null);
+                var length = data.Contents.length
+                objects += length;
+                if (data.IsTruncated == true){
+                    listS3Objects(bucket_name, data.Contents[length-1].Key, objects, next);
+                } else {
+                    next(null, objects);
+                }
+            })
+        };
+        listS3Objects(bucket_name, "", 0, next);
+    },
 
     /// RDS ///
 

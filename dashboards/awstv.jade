@@ -26,7 +26,7 @@ block content
             li(data-row='2', data-col='4', data-sizex='1', data-sizey='1')
                 div(data-id='record', data-view='Text', data-title='R53 records', style='background-color:#eb9c3c')
             li(data-row='2', data-col='5', data-sizex='1', data-sizey='1')
-                div(data-id='s3', data-view='Text', data-title='S3 Buckets', style='background-color:#96bf48')
+                div(data-id='s3_buckets', data-view='Text', data-title='S3 Buckets', style='background-color:#96bf48')
 
             li(data-row='3', data-col='2', data-sizex='1', data-sizey='1')
                 div(data-id='cache_cluster', data-view='Text', data-title='ElastiCache clusters')
@@ -36,6 +36,11 @@ block content
                 div(data-id='cache_sg', data-view='Text', data-title='ElastiCache SG')
             li(data-row='3', data-col='5', data-sizex='1', data-sizey='1')
                 div(data-id='eip', data-view='Meter', data-title='Elastic IPs', data-min='0')
+
+            li(data-row='4', data-col='1', data-sizex='1', data-sizey='1')
+                div(data-id='s3_objects', data-view='Text', data-title='S3 Objects', style='background-color:#96bf48')
+            li(data-row='4', data-col='2', data-sizex='2', data-sizey='1')
+                div(data-id='ec2_graph', data-view='Graph', data-title='EC2 instances', style='background-color:#eb9c3c')
 
 
 

@@ -20,7 +20,7 @@ app.get('/api/test', function(req, res) {
 
 
 // Set your default dashboard here
-dashing.default_dashboard = 'aws';
+dashing.default_dashboard = 'awstv';
 
 dashing.start();
 
