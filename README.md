@@ -36,5 +36,5 @@ AWS dashboard powered by Dashing-js & Node.js
     - EC2 instances: API call
     - Load Balancers: 20
     - Elastic IPs: API call
-    - todo RDS: 40
-    - todo ElastiCache instances: 20
+    - RDS: 40
+    - ElastiCache instances: 20
