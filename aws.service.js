@@ -68,6 +68,22 @@ module.exports = {
         });
     },
 
+    // EBS //
+
+    getEBSVolumes: function (next) {
+        ec2.describeVolumes(function(err, data){
+            if (err) return next(err, null);
+            next(null, data.Volumes);
+        });
+    },
+
+    getEBSSnapshots: function (next) {
+        ec2.describeSnapshots(function (err, data) {
+            if (err) return next(err, null);
+            next(null, data.Snapshots);
+        });
+    },
+
     /// ELB ///
 
     getELBs: function (next) {
@@ -169,18 +185,4 @@ route53.listHostedZones(function(err, data) {
 
 });
 
-
-send_event('summary', { items: [
-    { label:"EC2 instances", value:"0" },
-    { label:"Security Groups", value:"0" },
-    { label:"Elastic Load Balancers", value:"0" },
-    { label:"Elastic IPs", value:"0" },
-    { label:"S3 Buckets", value:"0" },
-    { label:"RDS instances", value:"0" },
-    { label:"R53 zones", value:"0" },
-    { label:"R53 records", value:"0" },
-    { label:"ElastiCache clusters", value:"0" },
-    { label:"ElastiCache nodes", value:"0" },
-    { label:"ElastiCache SG", value:"0" }
-] })
 */

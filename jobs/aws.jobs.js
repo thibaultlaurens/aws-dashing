@@ -1,13 +1,14 @@
-var CronJob = require('cron').CronJob,
+var async = require('async'),
+    CronJob = require('cron').CronJob,
     aws_service = require('../aws.service'),
     config = require("../config"),
 
     summary = { ec2_instances:0, elastic_ips:0, elbs:0, security_groups:0, s3_buckets:0,
         s3_objects:0, rds_instances:0, ec_clusters:0, ec_nodes:0, ec_security_groups:0,
-        r53_hosted_zones:0, r53_records:0 };
+        r53_hosted_zones:0, r53_records:0, ebs_volumes:0, ebs_snapshots:0 };
 
 
-// DEFAULT CRON JOB
+// DEFAULT CRON JOB, every x seconds
 
 new CronJob(config.JOB_INTERVAL, function(){
 
@@ -22,10 +23,6 @@ new CronJob(config.JOB_INTERVAL, function(){
                     var length = ec2_instances.length
                     summary.ec2_instances = length;
                     send_event('ec2', {value: length, max: limit});
-
-                    ec2_points.shift();
-                    ec2_points.push({x: ++ec2_last_x, y: length});
-                    send_event('ec2_graph', {points: ec2_points});
                 }
             })
         }
@@ -51,6 +48,22 @@ new CronJob(config.JOB_INTERVAL, function(){
         }
     });
 
+    aws_service.getRDSInstances(function(err, rds_instances){
+        if (!err) {
+            var length = rds_instances.length;
+            summary.rds_instances = length;
+            send_event('rds', {value: length, max: config.AWS_LIMITS.RDS });
+        }
+    });
+
+    aws_service.getElastiCacheNodes(function(err, ec_nodes){
+        if (!err) {
+            var length = ec_nodes.length
+            summary.ec_nodes = length;
+            send_event('cache_node', {value: length, max: config.AWS_LIMITS.ELASTICACHEINSTANCE });
+        }
+    });
+
     // send events for Text widgets
 
     aws_service.getSecurityGroups(function(err, security_groups){
@@ -61,28 +74,12 @@ new CronJob(config.JOB_INTERVAL, function(){
         }
     });
 
-    aws_service.getRDSInstances(function(err, rds_instances){
-        if (!err) {
-            var length = rds_instances.length;
-            summary.rds_instances = length;
-            send_event('rds', {text: length });
-        }
-    });
-
     aws_service.getElastiCacheClusters(function(err, ec_clusters){
        if (!err) {
            var length = ec_clusters.length;
            summary.ec_clusters = length;
            send_event('cache_cluster', {text: length });
        }
-    });
-
-    aws_service.getElastiCacheNodes(function(err, ec_nodes){
-        if (!err) {
-            var length = ec_nodes.length
-            summary.ec_nodes = length;
-            send_event('cache_node', {text: length });
-        }
     });
 
     aws_service.getElastiCacheSecurityGroups(function(err, ec_security_groups){
@@ -118,51 +115,26 @@ new CronJob(config.JOB_INTERVAL, function(){
         }
     });
 
-}, null, true, null);
-
-
-// LONG CRON JOB
-
-var ec2_points = [];
-for (var i = 1; i <= 10; i++) {         // init EC2 graph
-    ec2_points.push({x: i, y: i});
-}
-var ec2_last_x = ec2_points[ec2_points.length - 1].x;
-
-new CronJob(config.LONG_JOB_INTERVAL, function(){
-
-    console.log('running long cron job at: ' + new Date());
-
-    aws_service.getS3Buckets(function(err, s3_buckets){
+    aws_service.getEBSVolumes(function(err, volumes){
         if (!err) {
-            summary.s3_objects = 0;
-            s3_buckets.forEach(function(bucket){
-                aws_service.getS3Objects(bucket.Name, function(err, s3_objects){
-                    if (!err) {
-                        summary.s3_objects += s3_objects;
-                        send_event('s3_objects', {text: summary.s3_objects});
-                    }
-                });
-            });
+            var length = volumes.length;
+            summary.ebs_volumes = length;
+            send_event('ebs_volumes', {text: length });
         }
     });
 
-    aws_service.getEC2InstanceLimit(function(err, limit){
+    aws_service.getEBSSnapshots(function(err, snapshots){
         if (!err) {
-            aws_service.getEC2Instances(function(err, ec2_instances){
-                if (!err) {
-                    ec2_points.shift();
-                    ec2_points.push({x: ++ec2_last_x, y: ec2_instances.length});
-                    send_event('ec2_graph', {points: ec2_points});
-                }
-            })
+            var length = snapshots.length;
+            summary.ebs_snapshots = length;
+            send_event('ebs_snapshots', {text: length });
         }
     });
 
 }, null, true, null);
 
 
-// send events for List widgets
+// send events for List widgets every 5 seconds
 
 setInterval(function() {
     send_event('summary', { items: [
@@ -177,9 +149,66 @@ setInterval(function() {
         { label:"R53 records", value:summary.r53_records },
         { label:"ElastiCache clusters", value:summary.ec_clusters },
         { label:"ElastiCache nodes", value:summary.ec_nodes },
-        { label:"ElastiCache SG", value:summary.ec_security_groups }
+        { label:"ElastiCache SG", value:summary.ec_security_groups },
+        { label:"EBS Volumes", value:summary.ebs_volumes },
+        { label:"EBS Snapshots", value:summary.ebs_snapshots }
     ] })
 }, 5 * 1000);
+
+
+// LONG CRON JOB, every x minutes
+
+var ec2_points = [];
+for (var i = 1; i <= 10; i++) {         // init EC2 graph
+    ec2_points.push({x: i, y: i});
+}
+var ec2_last_x = ec2_points[ec2_points.length - 1].x;
+
+new CronJob(config.LONG_JOB_INTERVAL, function(){
+
+    console.log('running long cron job at: ' + new Date());
+
+    aws_service.getEC2Instances(function(err, ec2_instances){
+        if (!err) {
+            ec2_points.shift();
+            ec2_points.push({x: ++ec2_last_x, y: ec2_instances.length});
+            send_event('ec2_graph', {points: ec2_points});
+        }
+    });
+
+}, null, true, null);
+
+
+// DAILY CRON JOB
+
+new CronJob(config.DAILY_JOB_INTERVAL, function(){
+
+    console.log('running daily cron job at: ' + new Date());
+
+    aws_service.getS3Buckets(function(err, s3_buckets){
+        if (!err) {
+            summary.s3_objects = 0;
+            var s3_objects = 0;
+            async.each(s3_buckets, function(bucket, callback){
+                aws_service.getS3Objects(bucket.Name, function(err, objects){
+                    if (!err) {
+                        s3_objects += objects;
+                        callback()
+                    }
+                });
+            }, function(err){
+                if (!err) {
+                    summary.s3_objects = s3_objects;
+                    send_event('s3_objects', {text: summary.s3_objects});
+                }
+            });
+        }
+    });
+
+}, null, true, null);
+
+
+
 
 
 

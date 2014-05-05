@@ -14,36 +14,36 @@ block content
             li(data-row='1', data-col='4', data-sizex='1', data-sizey='1')
                 div(data-id='sg', data-view='Text', data-title='Security Groups', style='background-color:#9c4274')
             li(data-row='1', data-col='5', data-sizex='1', data-sizey='1')
-                div(data-id='elb', data-view='Meter', data-title='Load Balancers', data-min='0', data-max='20')
-
+                div(data-id='elb', data-view='Meter', data-title='Load Balancers', data-min='0')
 
             li(data-row='2', data-col='1', data-sizex='1', data-sizey='2')
                 div(data-id='summary', data-view='List', data-unordered='true', data-title='Summary', data-moreinfo='aws components currently available')
             li(data-row='2', data-col='2', data-sizex='1', data-sizey='1')
-                div(data-id='rds', data-view='Text', data-title='RDS instances', style='background-color:#96bf48')
-            li(data-row='2', data-col='3', data-sizex='1', data-sizey='1')
-                div(data-id='hz', data-view='Text', data-title='R53 zones', style='background-color:#eb9c3c')
-            li(data-row='2', data-col='4', data-sizex='1', data-sizey='1')
-                div(data-id='record', data-view='Text', data-title='R53 records', style='background-color:#eb9c3c')
-            li(data-row='2', data-col='5', data-sizex='1', data-sizey='1')
                 div(data-id='s3_buckets', data-view='Text', data-title='S3 Buckets', style='background-color:#96bf48')
+            li(data-row='2', data-col='3', data-sizex='1', data-sizey='1')
+                div(data-id='s3_objects', data-view='Text', data-title='S3 Objects', style='background-color:#96bf48')
+            li(data-row='2', data-col='4', data-sizex='1', data-sizey='1')
+                div(data-id='hz', data-view='Text', data-title='R53 zones', style='background-color:#eb9c3c')
+            li(data-row='2', data-col='5', data-sizex='1', data-sizey='1')
+                div(data-id='record', data-view='Text', data-title='R53 records', style='background-color:#eb9c3c')
 
-            li(data-row='3', data-col='2', data-sizex='1', data-sizey='1')
-                div(data-id='cache_cluster', data-view='Text', data-title='ElastiCache clusters')
-            li(data-row='3', data-col='3', data-sizex='1', data-sizey='1')
-                div(data-id='cache_node', data-view='Text', data-title='ElastiCache nodes')
+            li(data-row='3', data-col='2', data-sizex='2', data-sizey='1')
+                div(data-id='ec2_graph', data-view='Graph', data-title='EC2 instances', style='background-color:#eb9c3c')
             li(data-row='3', data-col='4', data-sizex='1', data-sizey='1')
-                div(data-id='cache_sg', data-view='Text', data-title='ElastiCache SG')
+                div(data-id='ebs_volumes', data-view='Text', data-title='EBS Volumes', style='background-color:#9c4274')
             li(data-row='3', data-col='5', data-sizex='1', data-sizey='1')
-                div(data-id='eip', data-view='Meter', data-title='Elastic IPs', data-min='0')
+                div(data-id='ebs_snapshots', data-view='Text', data-title='EBS Snapshots', style='background-color:#9c4274')
 
             li(data-row='4', data-col='1', data-sizex='1', data-sizey='1')
-                div(data-id='s3_objects', data-view='Text', data-title='S3 Objects', style='background-color:#96bf48')
-            li(data-row='4', data-col='2', data-sizex='2', data-sizey='1')
-                div(data-id='ec2_graph', data-view='Graph', data-title='EC2 instances', style='background-color:#eb9c3c')
-
-
-
+                div(data-id='cache_cluster', data-view='Text', data-title='ElastiCache clusters')
+            li(data-row='4', data-col='2', data-sizex='1', data-sizey='1')
+                div(data-id='cache_node', data-view='Meter', data-title='ElastiCache nodes', data-min='0')
+            li(data-row='4', data-col='3', data-sizex='1', data-sizey='1')
+                div(data-id='cache_sg', data-view='Text', data-title='ElastiCache SG')
+            li(data-row='4', data-col='4', data-sizex='1', data-sizey='1')
+                div(data-id='eip', data-view='Meter', data-title='Elastic IPs', data-min='0')
+            li(data-row='4', data-col='5', data-sizex='1', data-sizey='1')
+                div(data-id='rds', data-view='Meter', data-title='RDS instances', data-min='0')
 
 block scripts
     script.

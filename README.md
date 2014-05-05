@@ -12,21 +12,21 @@ AWS dashboard powered by Dashing-js & Node.js
 ### Getting started
 
 - instal Node.js
-- ~~run redis-server somewhere~~
-- turn config.ex.js into config.js + replace default values
-- "node server.js" in your terminal
+- turn config.ex.js into config.js & replace default values
+- start the server: "node server.js"
 - go and check the dashboard at http://localhost:3030
 
 
 ### Supported aws services:
 - EC2 instances
 - Elastic Load Balancers
-- Security Groups
-- S3 Buckets
+- EC2 Security Groups
+- S3 Buckets & Objects
 - Elastic IPs
 - ElastiCache (clusters, nodes and security groups)
 - Route 53 (hosted zones and record set)
 - RDS instances
+- EBS volumes and Snapshots
 
 
 ### Notes
@@ -36,34 +36,5 @@ AWS dashboard powered by Dashing-js & Node.js
     - EC2 instances: API call
     - Load Balancers: 20
     - Elastic IPs: API call
-    - //todo RDS: 40
-    - //todo ElastiCache instances: 20
-
-
-### TODO
-
-- 1) ~~config.js (redis_url, job_interval, aws_account)~~
-- 2) ~~aws.jobs.js query aws and emit event for dashing~~
-- 3) ~~cron job for aws.job.js~~
-- 4) implement more aws services / widgets - add graph widgets + meter widget for rds and ec_instances
-- 5) store aws in redis, aws.jobs.js write to redis
-
-
-### WIDGET/AWS CALL TO IMPLEMENT
-- s3 objects
-- ec2 volumes
-- ec2 snapshots
-- ec2 tags
-- ec2 ami
-- db snapshots
-- db security groups
-- db schemas
-
-
-### NEXT
-
-- play with pricing API
-- handle redis connection drop + add opt redis auth
-- api.js -> read redis and send json info to browser at /api/ec2, /api/ etc.
-- change the job_interval in the UI
-- allow multiple aws accounts with same dashboards layout / change un the UI?
+    - todo RDS: 40
+    - todo ElastiCache instances: 20

@@ -13,17 +13,14 @@ block content
             li(data-row='1', data-col='4', data-sizex='1', data-sizey='1')
                 div(data-id='s3_buckets', data-view='Text', data-title='S3 Buckets')
 
-
-            li(data-row='2', data-col='1', data-sizex='1', data-sizey='1', style='background-color:#fff')
-                div(data-id='rds', data-view='Text', data-title='RDS instances')
-            li(data-row='2', data-col='2', data-sizex='1', data-sizey='1')
+            li(data-row='2', data-col='1', data-sizex='1', data-sizey='1')
                 div(data-id='hz', data-view='Text', data-title='R53 zones', style='background-color:#eb9c3c')
+            li(data-row='2', data-col='2', data-sizex='1', data-sizey='1')
+                div(data-id='ebs_volumes', data-view='Text', data-title='EBS Volumes', style='background-color:#9c4274')
             li(data-row='2', data-col='3', data-sizex='1', data-sizey='1')
-                div(data-id='record', data-view='Text', data-title='R53 records', style='background-color:#eb9c3c')
-            li(data-row='2', data-col='4', data-sizex='1', data-sizey='1')
                 div(data-id='eip', data-view='Meter', data-title='Elastic IPs', data-min='0')
-
-
+            li(data-row='2', data-col='4', data-sizex='1', data-sizey='1')
+                div(data-id='rds', data-view='Meter', data-title='RDS instances', data-min='0')
 
 block scripts
     script.

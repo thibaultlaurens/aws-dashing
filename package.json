@@ -5,10 +5,11 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "dashing-js": "~0.1.5",
-    "redis": "~0.10.1",
+    "async": "^0.8.0",
     "aws-sdk": "~2.0.0-rc13",
-    "cron": "~1.0.4"
+    "cron": "~1.0.4",
+    "dashing-js": "~0.1.5",
+    "redis": "~0.10.1"
   },
   "engine": "node >= 0.10"
 }
