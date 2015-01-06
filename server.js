@@ -17,18 +17,10 @@ app.get('/api/test', function(req, res) {
  }
  */
 
-
-
 // Set your default dashboard here
 dashing.default_dashboard = 'awstv';
 
 dashing.start();
 
-//config load and redis co for later
-/*
-var config = require("./config");
-var redis = require("redis");
-var client = redis.createClient(config.DB.PORT, config.DB.HOST);
-*/
 
 var aws_job = require('./jobs/aws.jobs');
