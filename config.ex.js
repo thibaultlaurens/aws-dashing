@@ -5,7 +5,8 @@ module.exports = {
     DAILY_JOB_INTERVAL: "0 0 00 * * *",
     AWS: {
         ACCESSKEY: "lalalalala",
-        SECRETKEY: "lalalalala"
+        SECRETKEY: "lalalalala",
+        REGION: "us-east-1"
     },
     AWS_LIMITS: {
         RDS: "40",

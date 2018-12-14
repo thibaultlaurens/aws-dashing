@@ -7,7 +7,7 @@ AWS.config.update(
     {
         accessKeyId: config.AWS.ACCESSKEY,
         secretAccessKey: config.AWS.SECRETKEY,
-        region: 'us-east-1'
+        region: config.AWS.REGION
     }
 );
 
